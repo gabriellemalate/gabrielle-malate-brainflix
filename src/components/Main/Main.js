@@ -319,7 +319,7 @@ function Main() {
                 <div className='main-eq__all'>
                     <div className='main-eq__section'>
                         <VideoInfo videoData={selectedVideo || videoData[0]} />
-                        <Comments />
+                        <Comments videoData={selectedVideo} />
                     </div>
                     <Other videoData={videoData} onSelect={setSelectedVideo} />
                 </div>
