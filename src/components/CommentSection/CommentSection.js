@@ -4,16 +4,19 @@ import "./CommentSection.scss"
 import CommentOld from "../CommentOld/CommentOld"
 import CommentAdd from "../CommentAdd/CommentAdd"
 
-function Comments({videoData}) {
+function Comments({ videoData, onAddComment }) {
     if (!videoData || !videoData.comments) {
         return null;
     }
 
     const { comments } = videoData;
 
-    const addComment = (newComment) => {
-        
-    };
+    // const addComment = (newComment) => {
+    //     setVideoData((prevVideoData) => ({
+    //         ...prevVideoData,
+    //         comments: [...prevVideoData.comments, newComment],
+    //     }));
+    // };
 
     return (
         <section className='comments'>
@@ -22,10 +25,10 @@ function Comments({videoData}) {
                 <h4 className='comments__counter'>{`${comments.length} ${comments.length === 1 ? "Comment" : "Comments"
                     }`}</h4>
 
-                <CommentAdd onAddComment={addComment} />
+                <CommentAdd onAddComment={onAddComment} videoId={videoData.id} />
 
-                {comments.map((comments) => (
-                        <CommentOld key={comments.id} comments={comments} />
+                {comments.map((comment) => (
+                    <CommentOld key={comment.id} comments={comment} />
                 ))}
             </div>
         </section>

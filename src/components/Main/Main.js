@@ -312,14 +312,21 @@ function Main() {
     ]
     const [selectedVideo, setSelectedVideo] = useState(videoData[0]);
 
+    const addComment = (newComment) => {
+        setSelectedVideo((prevSelectedVideo) => ({
+            ...prevSelectedVideo,
+            comments: [...prevSelectedVideo.comments, newComment],
+        }));
+    };
+
     return (
         <main className='main'>
-            <VideoSection selectedVideo={selectedVideo}/>
+            <VideoSection selectedVideo={selectedVideo} />
             <div className='main-eq'>
                 <div className='main-eq__all'>
                     <div className='main-eq__section'>
                         <VideoInfo videoData={selectedVideo || videoData[0]} />
-                        <Comments videoData={selectedVideo} />
+                        <Comments videoData={selectedVideo} onAddComment={addComment} />
                     </div>
                     <Other videoData={videoData} onSelect={setSelectedVideo} />
                 </div>
