@@ -73,10 +73,12 @@
                 height: 0.2rem;
             }
             &::-webkit-slider-thumb {
+                -webkit-appearance: none;
                 background-color: $white;
                 margin-top: -0.4rem;
                 width: 1rem;
                 cursor: pointer;
+                outline: none;
             }
         }
 
@@ -113,6 +115,10 @@
             max-height: 1.2rem;
             @include row;
             width: 1rem;
+
+            &:hover{
+                cursor: pointer;
+            }
 
             @include tablet {
                 width: 2rem;
