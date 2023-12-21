@@ -2,7 +2,7 @@
 
 @mixin font {
     @font-face {
-        font-family: "avenir-next";
+        font-family: "avenir-next", Avenir, Helvetica, sans-serif;
         src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf) format ("opentype");
         src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf) format ("opentype");
     }
@@ -38,11 +38,15 @@
     width: 9.375rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
 }
 @mixin button--mobile {
     @include button;
     width: 100%;
+    border: 0;
+    background-color: $brainflix-blue;
+    color: $white;
+    justify-content: center;
 }
 
 // Text styles
@@ -52,7 +56,7 @@
     font-weight: 700;
 }
 @mixin section-head {
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1.25rem;
     font-weight: 700;
 }
@@ -67,7 +71,7 @@
     font-weight: 400;
 }
 @mixin label--mobile {
-    font-size: .625rem;
+    font-size: 0.625rem;
     line-height: 1.25rem;
     font-weight: 700;
 }
@@ -77,17 +81,40 @@
     font-weight: 700;
 }
 @mixin subhead--tablet {
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     font-weight: 700;
 }
 @mixin body--tablet {
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 1.375rem;
     font-weight: 400;
 }
 @mixin label--tablet {
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1.25rem;
     font-weight: 700;
+}
+
+// Image
+@mixin user {
+    border-radius: 50%;
+    width: 12vw;
+    max-width: 2.6rem;
+    background-color: $mercury;
+}
+
+@mixin controls {
+    background-color: rgb(0, 0, 0, 0.5);
+    border-radius: 0.25rem;
+    border: 0;
+}
+
+// Input Box
+@mixin input-box {
+    padding-top: 0.6rem;
+    resize: none;
+    background-color: $alabaster;
+    border-radius: 0.25rem;
+    border: $mercury 0.0625rem solid;
 }
