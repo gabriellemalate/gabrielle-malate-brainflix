@@ -51,9 +51,12 @@
         }
     }
     &__user {
+        &:hover {
+            cursor: pointer;
+        }
+
         &--mobile {
             @include user;
-            // margin-left: 1rem;
 
             @include tablet {
                 display: none;
@@ -132,7 +135,7 @@
         @include row;
         justify-content: flex-start;
 
-        &:hover  {
+        &:hover {
             background-color: $brainflix-DarkBlue;
             cursor: pointer;
         }

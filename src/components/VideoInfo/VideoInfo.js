@@ -11,9 +11,7 @@ function VideoInfo({ videoData }) {
 
     const { title, channel, timestamp, views, likes, description } = videoData;
 
-    // Convert timestamp to Date object
     const date = new Date(videoData.timestamp);
-    // Format date as "Month Day, Year"
     const formattedDate = date.toLocaleDateString
     ("en-US", {
         year: "numeric",

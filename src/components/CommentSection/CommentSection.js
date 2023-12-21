@@ -12,7 +12,7 @@ function Comments({videoData}) {
     const { comments } = videoData;
 
     const addComment = (newComment) => {
-        // setComments([...comments, newComment]);
+        
     };
 
     return (
