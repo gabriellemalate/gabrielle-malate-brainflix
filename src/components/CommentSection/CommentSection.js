@@ -24,8 +24,8 @@ function Comments({videoData}) {
 
                 <CommentAdd onAddComment={addComment} />
 
-                {comments.map((comment) => (
-                        <CommentOld key={comment.id} comments={comment} />
+                {comments.map((comments) => (
+                        <CommentOld key={comments.id} comments={comments} />
                 ))}
             </div>
         </section>
