@@ -1,26 +1,33 @@
-import "./Other.scss"
-
-import Preview from "../../assets/images/Upload-video-preview.jpg";
+import React, { useState } from "react";
+import "./Other.scss";
+import OtherOne from "../OtherOne/OtherOne";
 
 function Other(props) {
+    const { videoData, onSelect } = props;
+    const [selectedVideo, setSelectedVideo] = useState(videoData[0]);
+
+    const handleSelectVideo = (videoData) => {
+        setSelectedVideo(videoData);
+        onSelect(videoData);
+    };
+
+    // Filter the list to exclude the selected video
+    const filteredVideoData = videoData.filter(
+        (video) => video.id !== selectedVideo.id
+    );
+
     return (
         <section className='other'>
             <div className='other__all'>
                 <h3 className='other__head'>NEXT  VIDEOS</h3>
-                <article className='other__one'>
-                    <img className='other__one-preview' src={Preview} alt="Next Video Preview" />
-                    <div className='other__one-text'>
-                        <h4 className='other__one-text-title'>Become A Travel Pro In One Easy Lesson</h4>
-                        <p className='other__one-text-creator'>Todd Welch</p>
-                    </div>
-                </article>
-                <article className='other__one'>
-                    <img className='other__one-preview' src={Preview} alt="Next Video Preview" />
-                    <div className='other__one-text'>
-                        <h4 className='other__one-text-title'>Les Houches The Hidden Gem Of The Chamonix</h4>
-                        <p className='other__one-text-creator'>Todd Welch</p>
-                    </div>
-                </article>
+                {filteredVideoData.map((data) => (
+                    <OtherOne
+                        key={data.id}
+                        videoData={data}
+                        onSelect={handleSelectVideo}
+                        isSelected={selectedVideo && selectedVideo.id === data.id}
+                    />
+                ))}
             </div>
         </section>
     );

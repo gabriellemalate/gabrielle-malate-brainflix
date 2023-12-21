@@ -7,15 +7,27 @@
     &-eq {
         @include desktop {
             @include row;
-            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        &__all {
+            @include desktop {
+                @include row;
+                align-items: flex-start;
+                // max-width: 140.4vh;
+                border: 1px green solid;
+            }
+    
+        }
+
+        &__section {
+            @include desktop {
+                width: 64.4%;
+                @include column;
+                border-right: 0.09rem solid $mercury;
+            }
         }
     }
 
-    &-section {
-        @include desktop {
-            width: 64.4%;
-            @include column;
-            border-right: 0.09rem solid $mercury;
-        }
-    }
+    
 }

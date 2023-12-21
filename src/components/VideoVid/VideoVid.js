@@ -1,8 +1,8 @@
 import "./VideoVid.scss"
 
-function VideoVid(props) {
+function VideoVid({posterImage}) {
     return (
-        <video autoPlay className='video-vid' poster="https://i.imgur.com/l2Xfgpl.jpg">
+        <video autoPlay className='video-vid' poster={posterImage}>
             <source className='video-vid__source' src="" />
         </video>
     );
