@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import "./CommentAdd.scss"
-
 import Mohan from "../../assets/images/Mohan-muruge.jpg";
 import SpeechBubble from "../../assets/images/icons/add_comment.svg";
 

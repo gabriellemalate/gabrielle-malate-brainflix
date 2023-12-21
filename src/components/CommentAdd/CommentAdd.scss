@@ -66,6 +66,8 @@
             margin-bottom: 1rem;
             max-height: 6rem;
             padding-left: 1rem;
+            @include font;
+            font-family: avenir-next, Avenir, Arial, Helvetica, sans-serif;
 
             &:focus {
                 border-color: $brainflix-blue;
