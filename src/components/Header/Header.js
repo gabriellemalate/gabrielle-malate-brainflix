@@ -2,14 +2,15 @@ import Logo from "../../assets/images/BrainFlix-logo.svg";
 import MagnifyingGlass from "../../assets/images/icons/search.svg"
 import UserImage from "../../assets/images/Mohan-muruge.jpg";
 import Upload from "../../assets/images/icons/upload.svg";
-
 import "./Header.scss"
 
 function Header(props) {
     return (
         <header className='header'>
             <div className='header__eq'>
-                <img className="header__logo" src={Logo} alt="BrainFlix Logo" />
+                <a href="../../../public/index.html">
+                    <img className="header__logo" src={Logo} alt="BrainFlix Logo"/>
+                </a>
 
                 <div className='header__right'>
                     <div className='header__right-box-user'>
