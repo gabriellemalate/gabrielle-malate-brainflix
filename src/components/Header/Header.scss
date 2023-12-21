@@ -97,6 +97,8 @@
             width: 100%;
             padding-left: 2.2rem;
             max-height: 1.8rem;
+            @include font;
+            font-family: avenir-next, Avenir, Arial, Helvetica, sans-serif;
 
             @include tablet {
                 width: 12.4rem;
