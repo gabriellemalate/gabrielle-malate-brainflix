@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "../../assets/images/BrainFlix-logo.svg";
 import MagnifyingGlass from "../../assets/images/icons/search.svg"
 import UserImage from "../../assets/images/Mohan-muruge.jpg";

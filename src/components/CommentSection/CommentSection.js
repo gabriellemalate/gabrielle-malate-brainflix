@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CommentSection.scss"
 
 import CommentOld from "../CommentOld/CommentOld"

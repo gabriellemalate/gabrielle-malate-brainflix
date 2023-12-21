@@ -14,7 +14,7 @@ function CommentOld({ comments }) {
     return (
         <article className='comments-old'>
             <div key={id} className='comments-old__eq'>
-                <img className='comments-old__img' src={Empty} alt="Commenter Photo"></img>
+                <img className='comments-old__img' src={Empty} alt="Commenter"></img>
                 <div className="comments-old__text">
                     <div className="comments-old__text-top">
                         <h3 className="comments-old__text-top-name">{name}</h3>
