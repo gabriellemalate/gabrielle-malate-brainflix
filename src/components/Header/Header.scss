@@ -51,10 +51,6 @@
         }
     }
     &__user {
-        &:hover {
-            cursor: pointer;
-        }
-
         &--mobile {
             @include user;
 
