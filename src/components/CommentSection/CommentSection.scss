@@ -1,0 +1,228 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.comments {
+    @include column;
+    margin-bottom: 1rem;
+
+    @include tablet {
+        margin-bottom: $padding__btwn-comps--tablet;
+    }
+
+    @include desktop {
+        align-self: flex-end;
+        width: 84%;
+        align-items: flex-start;
+    }
+
+    &__eq {
+        width: 90%;
+
+        @include desktop {
+            @include column;
+            align-items: flex-start;
+            width: 100%;
+        }
+    }
+
+    &__counter {
+        @include subhead--mobile;
+
+        @include tablet {
+            @include subhead--tablet;
+        }
+    }
+
+    &-add {
+        border-bottom: $mercury 0.1rem solid;
+
+        @include tablet {
+            padding-bottom: 0.6rem;
+        }
+
+        @include desktop {
+            width: 98.6%;
+            align-self: flex-end;
+            border-bottom: 0;
+        }
+
+        &__all {
+            @include row;
+            justify-content: space-between;
+            padding: 0 0 $padding__btwn-comps--mobile;
+
+            @include desktop {
+                width: 96%;
+            }
+        }
+
+        &__img {
+            @include user;
+            align-self: flex-start;
+            margin-top: 1rem;
+            margin-right: 1rem;
+
+            @include tablet {
+                margin-right: 1.2rem;
+                margin-top: 1.2rem;
+            }
+        }
+
+        &__text {
+            width: 100%;
+
+            @include desktop {
+                width: 88.8%;
+            }
+
+            &-title {
+                @include subhead--mobile;
+                color: $silver;
+                margin: 0;
+                padding-bottom: 0.2rem;
+            }
+
+            &-form {
+                @include column;
+                width: 100%;
+
+                @include tablet {
+                    @include row;
+                    justify-content: space-between;
+                }
+            }
+            &-box {
+                @include input-box;
+                width: 94%;
+                height: 38vh;
+                margin-bottom: 1rem;
+                max-height: 6rem;
+                padding-left: 1rem;
+
+                @include tablet {
+                    height: 3vh;
+                    margin-bottom: 0;
+                    width: 86%;
+                }
+
+                &::placeholder {
+                    font-family: avenir-nexr, avenir, Arial, Helvetica, sans-serif;
+                    color: $brainflix-black;
+                }
+            }
+            &-button {
+                @include button--mobile;
+                @include row;
+                @include label--mobile;
+                font-size: 0.8rem;
+                width: 100%;
+                padding: 0;
+                justify-content: flex-start;
+
+                @include tablet {
+                    width: 17vh;
+                    min-width: 17vh;
+                    margin-left: 1.52rem;
+                }
+
+                @include desktop {
+                    width: 16vh;
+                    min-width: 16vh;
+                }
+
+                &-eq {
+                    @include row;
+                    justify-content: space-between;
+                    width: 64%;
+
+                    @include tablet {
+                        width: 12.4vh;
+                        padding-left: 0.1rem;
+                    }
+
+                    @include tablet {
+                        width: 12vh;
+                    }
+                }
+
+                &-icon {
+                    width: 1.2rem;
+                    left: 2rem;
+                    margin: 0 0.6rem;
+                }
+            }
+        }
+    }
+
+    &-old {
+        border-bottom: 0.1rem solid $mercury;
+        padding-top: 1rem;
+
+        @include tablet {
+            padding: $padding__btwn-comps--tablet 0 $padding__btwn-comps--tablet;
+        }
+
+        @include desktop {
+            border-bottom: 0;
+            border-top: 0.1rem solid $mercury;
+            @include row;
+            justify-content: flex-end;
+        }
+
+        &__eq {
+            @include row;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            @include desktop {
+                width: 98.4%;
+            }
+        }
+
+        &__img {
+            @include user;
+        }
+        &__text {
+            width: 100%;
+            padding-left: $padding__btwn-comps--mobile;
+
+            @include desktop {
+                width: 85.6%;
+                padding-right: 1.5rem;
+            }
+
+            &-top {
+                @include row;
+                justify-content: space-between;
+
+                &-name {
+                    margin: 0;
+                    @include subhead--mobile;
+
+                    @include tablet {
+                        @include subhead--tablet;
+                    }
+                }
+
+                &-date {
+                    margin: 0;
+                    @include body--mobile;
+                    color: $silver;
+
+                    @include tablet {
+                        @include body--tablet;
+                    }
+                }
+            }
+
+            &-comment {
+                @include body--mobile;
+
+                @include tablet {
+                    margin-bottom: 0;
+                    @include body--tablet;
+                }
+            }
+        }
+    }
+}

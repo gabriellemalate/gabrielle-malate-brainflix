@@ -1,0 +1,95 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.other {
+    @include column;
+    padding-bottom: $padding__btwn-comps--mobile;
+
+    &__all {
+        @include column;
+        align-items: flex-start;
+        width: 90%;
+        padding-bottom: $padding__btwn-comps--tablet;
+
+        @include desktop {
+            padding-top: $padding__btwn-comps--tablet;
+            padding-left: 1rem;
+        }
+    }
+    &__head {
+        @include subhead--mobile;
+        color: $silver;
+        margin: 0;
+        padding: 0.3rem 0 $padding__after-head--mobile;
+
+        @include tablet {
+            padding-bottom: $padding__after-head--tablet;
+            @include label--tablet;
+        }
+
+        @include desktop {
+            padding-bottom: 1rem;
+        }
+    }
+    &__one {
+        @include row;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        padding-bottom: $padding__btwn-comps--mobile;
+
+        @include tablet {
+            justify-content: flex-start;
+            padding-bottom: $padding__btwn-comps--tablet;
+        }
+
+        &-preview {
+            background-color: $mercury;
+            border-radius: 0.25rem;
+            width: 35%;
+            height: 28vh;
+            max-height: 18vw;
+
+            @include tablet {
+                width: 12vh;
+                height: 7.12vh;
+                max-width: 14vh;
+                max-height: 10vw;
+                margin-right: 1rem;
+                margin-top: 0.2rem;
+            }
+
+            @include desktop {
+                max-width: 11.6vh;
+                max-height: 7vh;
+            }
+        }
+        &-text {
+            width: 60%;
+            @include column;
+            align-items: flex-start;
+
+            @include tablet {
+                width: 18vh;
+            }
+
+            @include desktop {
+                width: 20vh;
+            }
+
+            &-title {
+                margin: 0;
+                @include subhead--mobile;
+                padding-bottom: 0.4rem;
+
+                @include tablet {
+                    @include subhead--tablet;
+                }
+            }
+            &-creator {
+                margin: 0;
+                @include body--mobile;
+            }
+        }
+    }
+}

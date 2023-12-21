@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.video-vid {
+    width: 100%;
+    background-color: $brainflix-DarkBlack;
+
+    @include tablet {
+        width: 90%;
+        height: 51vw;
+        max-height: 30rem;
+        max-width: 91.6vh;
+    }
+}

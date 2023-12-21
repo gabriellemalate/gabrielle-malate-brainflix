@@ -1,0 +1,23 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.video {
+    @include column;
+    height: 60vw;
+
+    @include tablet {
+        @include column;
+        height: 51vw;
+        max-height: 30rem;
+    }
+
+    &-eq {
+        width: 100%;
+
+        @include tablet {
+            background-color: $brainflix-DarkBlack;
+            @include column;
+            border: 0;
+        }
+    }
+}
