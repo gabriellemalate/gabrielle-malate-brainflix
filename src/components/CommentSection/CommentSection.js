@@ -11,13 +11,6 @@ function Comments({ videoData, onAddComment }) {
 
     const { comments } = videoData;
 
-    // const addComment = (newComment) => {
-    //     setVideoData((prevVideoData) => ({
-    //         ...prevVideoData,
-    //         comments: [...prevVideoData.comments, newComment],
-    //     }));
-    // };
-
     return (
         <section className='comments'>
             <div className='comments__eq'>
