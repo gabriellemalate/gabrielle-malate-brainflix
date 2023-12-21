@@ -67,6 +67,15 @@
             max-height: 6rem;
             padding-left: 1rem;
 
+            &:focus {
+                border-color: $brainflix-blue;
+                outline: none; 
+            }
+
+            &--error {
+                border-color: #D22D2D; 
+            }
+
             @include tablet {
                 height: 3vh;
                 margin-bottom: 0;

@@ -11,7 +11,7 @@ function Other(props) {
         onSelect(videoData);
     };
 
-    // Filter the list to exclude the selected video
+    // filter
     const filteredVideoData = videoData.filter(
         (video) => video.id !== selectedVideo.id
     );

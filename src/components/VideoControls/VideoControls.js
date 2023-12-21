@@ -1,5 +1,4 @@
 import Play from "../../assets/images/icons/play.svg";
-// import Scrubber from "./assets/images/icons/scrub.svg";
 import Expand from "../../assets/images/icons/fullscreen.svg";
 import Volume from "../../assets/images/icons/volume_off.svg";
 
@@ -13,9 +12,7 @@ function VideoControls(props) {
             </button>
             <div className='video-controls__eq'>
                 <div className='video-controls__scrub'>
-                    {/* <img className='video-controls__scrubber' src={Scrubber} alt="Video scrubber"/> */}
                     <input type="range" className="video-controls__scrubber"
-                    // value="0" step="1" min="0" max="100" 
                     />
                     <p className='video-controls__scrub-time'>0:00/4:01</p>
                 </div>
