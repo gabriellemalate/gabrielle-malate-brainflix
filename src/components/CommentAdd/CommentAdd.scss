@@ -78,6 +78,10 @@
                 border-color: #D22D2D; 
             }
 
+            &:focus.has-error {
+                border-color: $brainflix-blue;
+            }
+
             @include tablet {
                 height: 3vh;
                 margin-bottom: 0;
