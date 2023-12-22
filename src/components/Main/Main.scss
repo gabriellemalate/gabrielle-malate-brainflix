@@ -5,6 +5,7 @@
     background-color: $white;
 
     &-eq {
+        
         @include desktop {
             @include row;
             justify-content: center;

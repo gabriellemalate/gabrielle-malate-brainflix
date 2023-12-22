@@ -323,13 +323,13 @@ function Main() {
         <main className='main'>
             <VideoSection selectedVideo={selectedVideo} />
             <div className='main-eq'>
-                <div className='main-eq__all'>
+                <section className='main-eq__all'>
                     <div className='main-eq__section'>
                         <VideoInfo videoData={selectedVideo || videoData[0]} />
                         <Comments videoData={selectedVideo} onAddComment={addComment} />
                     </div>
                     <Other videoData={videoData} onSelect={setSelectedVideo} />
-                </div>
+                </section>
             </div>
         </main>
     );
