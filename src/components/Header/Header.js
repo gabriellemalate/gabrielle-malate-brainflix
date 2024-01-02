@@ -4,14 +4,24 @@ import MagnifyingGlass from "../../assets/images/icons/search.svg"
 import UserImage from "../../assets/images/Mohan-muruge.jpg";
 import Upload from "../../assets/images/icons/upload.svg";
 import "./Header.scss"
+import { Link, useNavigate } from "react-router-dom";
 
 function Header(props) {
+    let navigate = useNavigate();
+    function homeClick() {
+        navigate('/');
+    }
+    function upClick() {
+        navigate('/upload');
+    }
     return (
         <header className='header'>
             <div className='header__eq'>
-                <a href="../../../public/index.html">
-                    <img className="header__logo" src={Logo} alt="BrainFlix Logo"/>
-                </a>
+
+                <Link to="/">
+                    <img className="header__logo" src={Logo} alt="BrainFlix Logo" onClick={homeClick}/>
+                </Link>
+
 
                 <div className='header__right'>
                     <div className='header__right-box-user'>
