@@ -32,7 +32,7 @@ function Header(props) {
                         <img className="header__user--mobile" src={UserImage} alt="User" />
                     </div>
                     <button className="header__button">
-                        <div className="header__button-eq">
+                        <div className="header__button-eq" onClick={upClick}>
                             <img className="header__button-icon" alt="Upload Icon" src={Upload} />
                             UPLOAD
                         </div>
