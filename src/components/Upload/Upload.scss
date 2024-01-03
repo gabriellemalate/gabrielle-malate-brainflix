@@ -7,20 +7,43 @@ body {
 .upload {
     width: 100%;
     @include column;
-    border-top: .1rem $mercury solid;
+    border-top: 0.1rem $mercury solid;
 
     &-eq {
         @include column;
         align-items: flex-start;
         width: 90%;
+
+        @include desktop {
+            width: 80%;
+        }
+
+        &__all {
+            @include tablet {
+                border-bottom: 0.1rem solid $mercury;
+                padding-bottom: 1rem;
+            }
+            @include desktop {
+                @include row;
+                width: 100%;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+        }
+        &__boxes {
+            @include desktop {
+                width: 80%;
+                padding-left: 1.5rem
+            }
+        }
     }
     &-head {
         @include page-head--mobile;
-        padding-top: .4rem;
+        padding-top: 0.4rem;
 
         @include tablet {
             @include page-head--tablet;
-            border-bottom: .1rem $mercury solid;
+            border-bottom: 0.1rem $mercury solid;
             width: 100%;
             padding-bottom: 1.5rem;
         }
@@ -34,56 +57,72 @@ body {
             @include subhead--mobile;
             color: $silver;
             margin: 0;
-            padding-bottom: .4rem;
+            padding-bottom: 0.4rem;
+
+            @include desktop {
+                @include subhead--tablet
+            }
         }
         &__preview {
             width: 100%;
             background-color: $mercury;
-        border-radius: 0.25rem;
+            border-radius: 0.25rem;
 
-        @include tablet {
-            width: 50%;
-        }
+            @include tablet {
+                width: 50%;
+            }
+            @include desktop {
+                width: 36vh;
+            }
         }
     }
     &-title {
         width: 100%;
         padding-top: 1rem;
+        @include desktop {
+            padding-top: 0;
+        }
         &__head {
-            @extend .upload-thumb__head
+            @extend .upload-thumb__head;
+            @include desktop {
+            padding-bottom: .2rem;
+            }
         }
         &__box {
             resize: none;
             @include font;
             font-family: avenir;
-            padding: .4rem 0 0 .6rem;
+            padding: 0.4rem 0 0 0.6rem;
             @include input-box;
             width: 100%;
 
+            @include tablet {
+                padding-left: 1rem;
+            }
+
             &::placeholder {
                 color: $brainflix-black;
-
-                @include tablet {
-                    @include label--tablet;
-                    font-weight: 500;
-                }
             }
         }
     }
     &-description {
         padding-top: 1rem;
         width: 100%;
-        @include tablet {
-            border-bottom: .1rem solid $mercury;
-            padding-bottom: 1rem;
-        }
+        
         &__head {
             @extend .upload-thumb__head;
+            @include desktop {
+                padding-bottom: .2rem;
+                }
         }
         &__box {
             @extend .upload-title__box;
             height: 12vh;
             max-height: 6rem;
+
+            @include desktop {
+                height: 10vh;
+            }
         }
     }
 
@@ -98,7 +137,7 @@ body {
 
         @include tablet {
             width: 16.5vh;
-            margin-top: .5rem;
+            margin-top: 0.5rem;
         }
 
         &:hover {
@@ -138,7 +177,7 @@ body {
         font-weight: 700;
         background-color: $white;
         margin-top: 1rem;
-        border-radius: .25rem;
+        border-radius: 0.25rem;
 
         @include tablet {
             width: 14vh;
@@ -148,7 +187,8 @@ body {
             right: 11.6rem;
         }
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: $mercury;
             cursor: pointer;
         }
