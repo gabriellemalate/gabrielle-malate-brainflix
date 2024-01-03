@@ -1,4 +1,4 @@
-
+import "./Upload.scss"
 import React from "react";
 import publish from "../../assets/images/icons/publish.svg";
 import bike from "../../assets/images/Upload-video-preview.jpg"
