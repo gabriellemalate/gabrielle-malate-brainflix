@@ -30,10 +30,10 @@ function UploadPage() {
                                 PUBLISH
                             </div>
                         </button>
+                        <button className="upload-cancel">
+                            CANCEL
+                        </button>
                     </div>
-                    <button className="upload-cancel">
-                        CANCEL
-                    </button>
                 </div>
             </section>
         </>

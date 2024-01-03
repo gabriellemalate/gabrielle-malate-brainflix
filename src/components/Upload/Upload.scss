@@ -17,6 +17,13 @@ body {
     &-head {
         @include page-head--mobile;
         padding-top: .4rem;
+
+        @include tablet {
+            @include page-head--tablet;
+            border-bottom: .1rem $mercury solid;
+            width: 100%;
+            padding-bottom: 1.5rem;
+        }
     }
 
     &-thumb {
@@ -33,6 +40,10 @@ body {
             width: 100%;
             background-color: $mercury;
         border-radius: 0.25rem;
+
+        @include tablet {
+            width: 50%;
+        }
         }
     }
     &-title {
@@ -49,10 +60,6 @@ body {
             @include input-box;
             width: 100%;
 
-            @include tablet {
-                width: 12.4rem;
-            }
-
             &::placeholder {
                 color: $brainflix-black;
 
@@ -66,6 +73,10 @@ body {
     &-description {
         padding-top: 1rem;
         width: 100%;
+        @include tablet {
+            border-bottom: .1rem solid $mercury;
+            padding-bottom: 1rem;
+        }
         &__head {
             @extend .upload-thumb__head;
         }
@@ -85,22 +96,23 @@ body {
         justify-content: flex-start;
         width: 100%;
 
+        @include tablet {
+            width: 16.5vh;
+            margin-top: .5rem;
+        }
+
         &:hover {
             background-color: $brainflix-DarkBlue;
             cursor: pointer;
         }
 
-        @include tablet {
-            width: 17rem;
-        }
-
-        @include desktop {
-            margin-right: 1rem;
-        }
-
         &s {
             width: 100%;
             padding-top: 1rem;
+            @include tablet {
+                @include column;
+                align-items: flex-end;
+            }
         }
 
         &-eq {
@@ -109,7 +121,7 @@ body {
             width: 56%;
 
             @include tablet {
-                width: 6.2rem;
+                width: 11vh;
             }
         }
 
@@ -125,6 +137,16 @@ body {
         border: 0;
         font-weight: 700;
         background-color: $white;
+        margin-top: 1rem;
+        border-radius: .25rem;
+
+        @include tablet {
+            width: 14vh;
+            margin: 0;
+            position: relative;
+            bottom: 2.5rem;
+            right: 11.6rem;
+        }
 
         &:hover, &:focus {
             background-color: $mercury;
