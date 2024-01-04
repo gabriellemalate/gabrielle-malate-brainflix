@@ -4,7 +4,6 @@ import Eye from "../../assets/images/icons/views.svg";
 import Heart from "../../assets/images/icons/likes.svg";
 
 function VideoInfo({ videoData }) {
-
     if (!videoData) {
         return null;
     }

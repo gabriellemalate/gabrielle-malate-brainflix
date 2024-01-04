@@ -18,7 +18,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/:videoId' element={<SelectedVideo />} />
+          <Route path='/videos/:videoId' element={<SelectedVideo />} />
           <Route path='/upload' element={<UploadPage />} />
           <Route path='/success' element={<Success/>}/>
           <Route path='*' element={<NotFound />} />
