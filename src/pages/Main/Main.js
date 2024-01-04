@@ -14,31 +14,32 @@ const apiUrl = "https://project-2-api.herokuapp.com";
 function Main() {
     const [videoData, setVideoData] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const { videoId } = useParams();
 
     useEffect(() => {
-        const fetchVideoData = async () => {
+        const fetchData = async () => {
             try {
                 const response = await axios.get(`${apiUrl}/videos?api_key=${apiKey}`);
-
                 if (response.data.length > 0) {
                     setVideoData(response.data);
-                    if (videoId) {
-                        const selected = response.data.find(video => video.id === videoId);
-                        setSelectedVideo(selected || response.data[0]);
-                    } else {
-                        setSelectedVideo(response.data[0]); // Select the first video by default
-                    }
+
+                    const selected =
+                        videoId && response.data.find((video) => video.id === videoId);
+
+                    setSelectedVideo(selected || response.data[0]);
                 } else {
                     console.error("No videos found in the response.");
                 }
             } catch (error) {
-                console.error("Error fetching video data:", error);
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
             }
         };
-        fetchVideoData();
-    }, [videoId]); // empty dependency array. effect runs only once on component mount
+        fetchData();
+    }, [videoId]);
 
     useEffect(() => {
         const fetchSelectedVideoDetails = async () => {
@@ -57,9 +58,11 @@ function Main() {
             }
         };
 
-        fetchSelectedVideoDetails();
-    }, [selectedVideo]);
 
+        if (selectedVideo && !selectedVideo.comments) {
+            fetchSelectedVideoDetails();
+        }
+    }, [selectedVideo]);
 
     const addComment = (newComment) => {
         setSelectedVideo((prevSelectedVideo) => ({
@@ -69,21 +72,34 @@ function Main() {
     };
 
     const handleSelectVideo = (selectedVideo) => {
-        // Update the URL when a video is selected
+        // update URL when a video is selected
         navigate(`/videos/${selectedVideo.id}`);
         setSelectedVideo(selectedVideo);
     };
 
     return (
-        <main className='main'>
+        <main className="main">
             <VideoSection selectedVideo={selectedVideo} />
-            <div className='main-eq'>
-                <section className='main-eq__all'>
-                    <div className='main-eq__section'>
-                        <VideoInfo videoData={selectedVideo || videoData[0]} />
-                        <Comments videoData={selectedVideo} onAddComment={addComment} />
+            <div className="main-eq">
+                <section className="main-eq__all">
+                    <div className="main-eq__section">
+                        {loading ? (
+                            <h2 className="main-eq__section-load">Loading...</h2>
+                        ) : (
+                            <>
+                                <VideoInfo videoData={selectedVideo || videoData[0]} />
+                                <Comments
+                                    videoData={selectedVideo}
+                                    onAddComment={addComment}
+                                />
+                            </>
+                        )}
                     </div>
-                    <Other videoData={videoData} onSelect={handleSelectVideo} selectedVideo={selectedVideo} />
+                    <Other
+                        videoData={videoData}
+                        onSelect={handleSelectVideo}
+                        selectedVideo={selectedVideo}
+                    />
                 </section>
             </div>
         </main>

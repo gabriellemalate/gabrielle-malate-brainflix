@@ -12,6 +12,7 @@ function Other({ videoData, selectedVideo }) {
         (video) => selectedVideo && video.id !== selectedVideo.id
     );
 
+
     return (
         <section className='other'>
             <div className='other__all'>

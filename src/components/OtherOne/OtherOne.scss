@@ -16,9 +16,10 @@
     &-preview {
         background-color: $mercury;
         border-radius: 0.25rem;
-        width: 35%;
+        width: 32vw;
         height: 28vh;
         max-height: 18vw;
+        max-width: 22vh;
 
         @include tablet {
             width: 12vh;

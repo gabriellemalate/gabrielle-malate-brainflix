@@ -34,8 +34,9 @@
         padding-left: $padding__btwn-comps--mobile;
 
         @include desktop {
-            width: 85.6%;
+            width: 89.5%;
             padding-right: 1.5rem;
+            padding-left: 0rem;
         }
 
         &-top {

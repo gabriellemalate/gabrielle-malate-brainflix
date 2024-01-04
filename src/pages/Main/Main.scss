@@ -26,6 +26,11 @@
                 @include column;
                 border-right: 0.09rem solid $mercury;
             }
+
+            &-load {
+                @include page-head--tablet;
+                font-size: 3rem;
+            }
         }
     }
 
