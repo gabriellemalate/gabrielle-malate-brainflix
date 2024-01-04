@@ -4,12 +4,13 @@ import "./OtherOne.scss"
 
 function OtherOne({videoData, onSelect, isSelected}) {
     const { title, channel, image,} = videoData;
-    const thisClick = () => {
+    const handleClick = () => {
+        console.log('Clicked on:', videoData);
         onSelect(videoData);
     };
 
     return (
-        <article className={`other__one ${isSelected ? "selected" : ""}`}  onClick={thisClick}>
+        <article className={`other__one ${isSelected ? "selected" : ""}`}  onClick={handleClick}>
             <img className='other__one-preview' src={image} alt="Next Video Preview" />
             <div className='other__one-text'>
                 <h4 className='other__one-text-title'>{title}</h4>

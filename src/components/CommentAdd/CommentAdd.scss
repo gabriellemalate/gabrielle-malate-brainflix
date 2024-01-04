@@ -62,9 +62,7 @@
         &-box {
             @include input-box;
             width: 94%;
-            height: 38vh;
             margin-bottom: 1rem;
-            max-height: 6rem;
             padding-left: 1rem;
             @include font;
             font-family: avenir-next, Avenir, Arial, Helvetica, sans-serif;
@@ -83,7 +81,6 @@
             }
 
             @include tablet {
-                height: 3vh;
                 margin-bottom: 0;
                 width: 86%;
             }

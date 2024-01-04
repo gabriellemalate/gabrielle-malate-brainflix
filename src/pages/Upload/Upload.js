@@ -2,6 +2,7 @@ import "./Upload.scss"
 import React from "react";
 import publish from "../../assets/images/icons/publish.svg";
 import bike from "../../assets/images/Upload-video-preview.jpg"
+import {Link} from "react-router-dom";
 
 function UploadPage() {
     return (
@@ -32,7 +33,7 @@ function UploadPage() {
                         <button className="upload-button">
                             <div className="upload-button-eq">
                                 <img className="upload-button-icon" src={publish} alt="Publish" />
-                                PUBLISH
+                                <Link to="/success">PUBLISH</Link>
                             </div>
                         </button>
                         <button className="upload-cancel">

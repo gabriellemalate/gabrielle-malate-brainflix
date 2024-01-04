@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import "./Other.scss";
 import OtherOne from "../OtherOne/OtherOne";
 
 function Other(props) {
-    const { videoData, onSelect } = props;
-    const [selectedVideo, setSelectedVideo] = useState(videoData[0]);
+    const { videoData, onSelect, selectedVideo } = props;
 
-    const handleSelectVideo = (videoData) => {
-        setSelectedVideo(videoData);
-        onSelect(videoData);
-    };
-
-    // filter
+    // Check if selectedVideo is truthy before accessing its properties
     const filteredVideoData = videoData.filter(
-        (video) => video.id !== selectedVideo.id
+        (video) => selectedVideo && video.id !== selectedVideo.id
     );
-
+    
     return (
         <section className='other'>
             <div className='other__all'>
@@ -24,7 +19,7 @@ function Other(props) {
                     <OtherOne
                         key={data.id}
                         videoData={data}
-                        onSelect={handleSelectVideo}
+                        onSelect={onSelect}
                         isSelected={selectedVideo && selectedVideo.id === data.id}
                     />
                 ))}
@@ -32,5 +27,9 @@ function Other(props) {
         </section>
     );
 }
-
+Other.propTypes = {
+    videoData: PropTypes.array.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    selectedVideo: PropTypes.object,
+};
 export default Other;
