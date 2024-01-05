@@ -7,7 +7,7 @@ import VideoInfo from '../../components/VideoInfo/VideoInfo';
 import Comments from "../../components/CommentSection/CommentSection";
 import Other from "../../components/OtherVideos/Other";
 
-const apiKey = "c8f93081-09f2-4de0-baa5-ffe6fbc33fcf";
+export const apiKey = "c8f93081-09f2-4de0-baa5-ffe6fbc33fcf";
 const apiUrl = "https://project-2-api.herokuapp.com";
 
 
@@ -15,53 +15,53 @@ function Main() {
     const [videoData, setVideoData] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [duration, setDuration] = useState(0); 
+    const [duration, setDuration] = useState(0);
     const navigate = useNavigate();
     const { videoId } = useParams();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/videos?api_key=${apiKey}`);
-                if (response.data.length > 0) {
-                    setVideoData(response.data);
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/videos?api_key=${apiKey}`);
+            if (response.data.length > 0) {
+                setVideoData(response.data);
 
-                    const selected =
-                        videoId && response.data.find((video) => video.id === videoId);
+                const selected =
+                    videoId && response.data.find((video) => video.id === videoId);
 
-                    setSelectedVideo(selected || response.data[0]);
-                } else {
-                    console.error("No videos found in the response.");
-                }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            } finally {
-                setLoading(false);
+                setSelectedVideo(selected || response.data[0]);
+            } else {
+                console.error("No videos found in the response.");
             }
-        };
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchData();
     }, [videoId]);
 
-    useEffect(() => {
-        const fetchSelectedVideoDetails = async () => {
-            if (selectedVideo) {
-                try {
-                    const response = await axios.get(`${apiUrl}/videos/${selectedVideo.id}?api_key=${apiKey}`);
+    const fetchSelectedVideoDetails = async () => {
+        if (selectedVideo) {
+            try {
+                const response = await axios.get(`${apiUrl}/videos/${selectedVideo.id}?api_key=${apiKey}`);
 
-                    if (response.data) {
-                        const { duration } = response.data;
-                        setDuration(duration);
-                        setSelectedVideo(response.data);
-                    } else {
-                        console.error("No details found for the selected video.");
-                    }
-                } catch (error) {
-                    console.error("Error fetching selected video details:", error);
+                if (response.data) {
+                    const { duration } = response.data;
+                    setDuration(duration);
+                    setSelectedVideo(response.data);
+                } else {
+                    console.error("No details found for the selected video.");
                 }
+            } catch (error) {
+                console.error("Error fetching selected video details:", error);
             }
-        };
+        }
+    };
 
-
+    useEffect(() => {
         if (selectedVideo && !selectedVideo.comments) {
             fetchSelectedVideoDetails();
         }
@@ -85,24 +85,24 @@ function Main() {
             <VideoSection selectedVideo={selectedVideo} duration={selectedVideo ? selectedVideo.duration : 0} />
             <div className="main-eq">
                 <section className="main-eq__all">
-                    <div className="main-eq__section">
-                        {loading ? (
-                            <h2 className="main-eq__section-load">Loading...</h2>
-                        ) : (
-                            <>
+                    {loading ? (
+                        <h2 className="main-eq__section-load">Loading...</h2>
+                    ) : (
+                        <>
+                            <div className="main-eq__section">
                                 <VideoInfo videoData={selectedVideo || videoData[0]} />
                                 <Comments
                                     videoData={selectedVideo}
                                     onAddComment={addComment}
                                 />
-                            </>
-                        )}
-                    </div>
-                    <Other
-                        videoData={videoData}
-                        onSelect={handleSelectVideo}
-                        selectedVideo={selectedVideo}
-                    />
+                            </div>
+                            <Other
+                                videoData={videoData}
+                                onSelect={handleSelectVideo}
+                                selectedVideo={selectedVideo}
+                            />
+                        </>
+                    )}
                 </section>
             </div>
         </main>

@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Success.scss"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Success() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const redirectTimer = setTimeout(() => {
+            navigate("/");
+        }, 5000);
+
+        // timer clear
+        return () => clearTimeout(redirectTimer);
+    }, [navigate]);
+
     return (
         <article className="success">
             <h1 className="success-head">Upload Successful</h1>
@@ -51,7 +62,11 @@ function Success() {
                 </div>
             </div>
 
-            <p className="success-details">You'll be redirected shortly. Or you can <Link className="success-details__redirect" to="/">click here</Link></p>
+            <p className="success-details">You'll be redirected in 5 seconds. Or you can {" "}
+                <Link className="success-details__redirect" to="/">
+                    click here
+                </Link>
+            </p>
         </article>
     );
 }
