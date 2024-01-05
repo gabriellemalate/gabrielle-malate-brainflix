@@ -15,6 +15,7 @@ function Main() {
     const [videoData, setVideoData] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [duration, setDuration] = useState(0); 
     const navigate = useNavigate();
     const { videoId } = useParams();
 
@@ -48,6 +49,8 @@ function Main() {
                     const response = await axios.get(`${apiUrl}/videos/${selectedVideo.id}?api_key=${apiKey}`);
 
                     if (response.data) {
+                        const { duration } = response.data;
+                        setDuration(duration);
                         setSelectedVideo(response.data);
                     } else {
                         console.error("No details found for the selected video.");
@@ -79,7 +82,7 @@ function Main() {
 
     return (
         <main className="main">
-            <VideoSection selectedVideo={selectedVideo} />
+            <VideoSection selectedVideo={selectedVideo} duration={selectedVideo ? selectedVideo.duration : 0} />
             <div className="main-eq">
                 <section className="main-eq__all">
                     <div className="main-eq__section">

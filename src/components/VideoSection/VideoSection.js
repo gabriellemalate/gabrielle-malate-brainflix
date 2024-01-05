@@ -3,13 +3,13 @@ import "./VideoSection.scss"
 import VideoVid from "../VideoVid/VideoVid";
 import VideoControls from "../VideoControls/VideoControls";
 
-function VideoSection({selectedVideo}) {
+function VideoSection({selectedVideo, duration}) {
     return (
         <section className='video'>
             <div className='video-eq'>
-                <VideoVid posterImage={selectedVideo ? selectedVideo.image : ""} />
+                <VideoVid selectedVideo={selectedVideo} />
             </div>
-            <VideoControls/>
+            <VideoControls duration={duration}/>
         </section>
     );
 }
