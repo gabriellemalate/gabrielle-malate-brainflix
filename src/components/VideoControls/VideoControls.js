@@ -1,11 +1,13 @@
-import React , { useState} from "react";
+import React , { useState, useEffect} from "react";
 import Play from "../../assets/images/icons/play.svg";
+import Pause from "../../assets/images/icons/pause.svg";
 import Expand from "../../assets/images/icons/fullscreen.svg";
 import Volume from "../../assets/images/icons/volume_off.svg";
 
 import "./VideoControls.scss"
 
 function VideoControls({duration}) {
+    const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
 
     const formatTime = (timeInSeconds) => {
@@ -21,10 +23,30 @@ function VideoControls({duration}) {
         setCurrentTime(e.target.currentTime);
     };
 
+    const handlePlayPause = () => {
+        setIsPlaying((prevIsPlaying) => !prevIsPlaying);
+    };
+
+    useEffect(() => {
+        const video = document.querySelector('.video-vid');
+
+        const handleCanPlay = () => {
+        if (isPlaying) {
+            video.play();
+        }
+    };
+
+    video.addEventListener('canplay', handleCanPlay);
+
+    return () => {
+        video.removeEventListener('canplay', handleCanPlay);
+    };
+    }, [isPlaying]);
+
     return (
         <div className='video-controls'>
-            <button className='video-controls__play'>
-                <img className='video-controls__play-icon' src={Play} alt="Play" />
+            <button className='video-controls__play' onClick={handlePlayPause}>
+                <img className='video-controls__play-icon' src={isPlaying ? Pause : Play} alt={isPlaying ? "Pause" : "Play"} />
             </button>
             <div className='video-controls__eq'>
                 <div className='video-controls__scrub'>
