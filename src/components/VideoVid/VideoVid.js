@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./VideoVid.scss"
 
 import { apiKey } from "../../pages/Main/Main";
 
-function VideoVid({selectedVideo}) {
+function VideoVid({ selectedVideo, isPlaying }) {
+    const videoRef = useRef(null);
     const videoUrlWithApiKey = selectedVideo
         ? `${selectedVideo.video}?api_key=${apiKey}`
         : "";
 
-    console.log("Video URL:", selectedVideo ? selectedVideo.video : "");
+    useEffect(() => {
+        const video = videoRef.current;
+
+        if (isPlaying) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }, [isPlaying]);
+
     return (
-        <video autoPlay className='video-vid' poster={selectedVideo ? selectedVideo.image : ""}>
+        <video ref={videoRef} autoPlay className='video-vid' poster={selectedVideo ? selectedVideo.image : ""}>
             <source className='video-vid__source' src={videoUrlWithApiKey} />
         </video>
     );
@@ -19,6 +29,7 @@ function VideoVid({selectedVideo}) {
 
 VideoVid.propTypes = {
     selectedVideo: PropTypes.object,
+    isPlaying: PropTypes.bool,
 };
 
 export default VideoVid;
