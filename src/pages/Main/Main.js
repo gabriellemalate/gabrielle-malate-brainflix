@@ -5,7 +5,7 @@ import axios from "axios";
 import VideoSection from '../../components/VideoSection/VideoSection';
 import VideoInfo from '../../components/VideoInfo/VideoInfo';
 import Comments from "../../components/CommentSection/CommentSection";
-import Other from "../../components/OtherVideos/Other";
+import Other from "../../components/OtherVideos/OtherVideos";
 
 export const apiKey = "c8f93081-09f2-4de0-baa5-ffe6fbc33fcf";
 const apiUrl = "https://project-2-api.herokuapp.com";

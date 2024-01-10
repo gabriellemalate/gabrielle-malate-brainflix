@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function UploadPage() {
     return (
         <>
-            <section className="upload">
+            <main className="upload">
                 <div className="upload-eq">
                     <h1 className="upload-head">Upload Video</h1>
                     <div className="upload-eq__all">
@@ -43,7 +43,7 @@ function UploadPage() {
                         </button>
                     </div>
                 </div>
-            </section>
+            </main>
         </>
     );
 }
