@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from 'react-router-dom'; 
-import "./Other.scss";
+import "./OtherVideos.scss";
 import OtherOne from "../OtherOne/OtherOne";
 
 function Other({ videoData, selectedVideo }) {
