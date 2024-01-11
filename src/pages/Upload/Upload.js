@@ -1,10 +1,45 @@
 import "./Upload.scss"
-import React from "react";
+
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
 import publish from "../../assets/images/icons/publish.svg";
 import bike from "../../assets/images/Upload-video-preview.jpg"
-import { Link } from "react-router-dom";
 
 function UploadPage() {
+
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [videoFile, setVideoFile] = useState(null);
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setVideoFile(file);
+    };
+
+    const handlePublish = async () => {
+        try {
+            // formdata object to handle file uploads
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("video", videoFile);
+
+            // post request to localhost api
+            const response = await axios.post("http://localhost:8080/videos", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+
+            // redirect to success page
+            console.log("Video uploaded successfully:", response.data);
+        } catch (error) {
+            console.error("Error uploading video:", error);
+        }
+    };
+
     return (
         <>
             <main className="upload">
@@ -31,16 +66,18 @@ function UploadPage() {
 
                     <div className="upload-buttons">
                         <Link to="/success">
-                            <button className="upload-button">
+                            <button className="upload-button" onClick={handlePublish}>
                                 <div className="upload-button-eq">
                                     <img className="upload-button-icon" src={publish} alt="Publish" />
                                     PUBLISH
                                 </div>
                             </button>
                         </Link>
+                        <Link to="/">
                         <button className="upload-cancel">
                             CANCEL
                         </button>
+                        </Link>
                     </div>
                 </div>
             </main>
