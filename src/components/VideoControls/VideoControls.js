@@ -1,5 +1,4 @@
-// VideoControls.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Play from "../../assets/images/icons/play.svg";
 import Pause from "../../assets/images/icons/pause.svg";
 import Expand from "../../assets/images/icons/fullscreen.svg";
@@ -7,7 +6,7 @@ import Volume from "../../assets/images/icons/volume_off.svg";
 import "./VideoControls.scss";
 
 function VideoControls({ duration, isPlaying, onPlayPause }) {
-    const [currentTime, setCurrentTime] = useState(0);
+    const [currentTime] = useState(0);
 
     const formatTime = (timeInSeconds) => {
         if (typeof timeInSeconds !== "number" || isNaN(timeInSeconds)) {
@@ -16,10 +15,6 @@ function VideoControls({ duration, isPlaying, onPlayPause }) {
         const minutes = Math.floor(timeInSeconds / 60);
         const seconds = Math.floor(timeInSeconds % 60);
         return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    };
-
-    const handleTimeUpdate = (e) => {
-        setCurrentTime(e.target.currentTime);
     };
 
     return (

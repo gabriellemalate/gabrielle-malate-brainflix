@@ -103,6 +103,10 @@ body {
             &::placeholder {
                 color: $brainflix-black;
             }
+
+            &.error {
+                border: .1rem solid red;
+            }
         }
     }
     &-description {
@@ -122,6 +126,10 @@ body {
 
             @include desktop {
                 height: 10vh;
+            }
+
+            &.error {
+                border: .1rem solid red;
             }
         }
     }
