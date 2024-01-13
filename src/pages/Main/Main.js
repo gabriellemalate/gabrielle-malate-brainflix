@@ -6,9 +6,7 @@ import VideoSection from '../../components/VideoSection/VideoSection';
 import VideoInfo from '../../components/VideoInfo/VideoInfo';
 import Comments from "../../components/CommentSection/CommentSection";
 import Other from "../../components/OtherVideos/OtherVideos";
-
-export const apiKey = "c8f93081-09f2-4de0-baa5-ffe6fbc33fcf";
-const apiUrl = "https://project-2-api.herokuapp.com";
+const apiUrl = "http://localhost:8080";
 
 
 function Main() {
@@ -21,7 +19,7 @@ function Main() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/videos?api_key=${apiKey}`);
+            const response = await axios.get(`${apiUrl}/videos`);
             if (response.data.length > 0) {
                 setVideoData(response.data);
 
@@ -46,7 +44,7 @@ function Main() {
     const fetchSelectedVideoDetails = async () => {
         if (selectedVideo) {
             try {
-                const response = await axios.get(`${apiUrl}/videos/${selectedVideo.id}?api_key=${apiKey}`);
+                const response = await axios.get(`${apiUrl}/videos/${selectedVideo.id}`);
 
                 if (response.data) {
                     const { duration } = response.data;

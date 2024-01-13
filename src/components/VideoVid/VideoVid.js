@@ -2,13 +2,11 @@ import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./VideoVid.scss"
 
-import { apiKey } from "../../pages/Main/Main";
-
 function VideoVid({ selectedVideo, isPlaying }) {
     const videoRef = useRef(null);
-    const videoUrlWithApiKey = selectedVideo
-        ? `${selectedVideo.video}?api_key=${apiKey}`
-        : "";
+    const videoUrl = selectedVideo ? selectedVideo.video : "";
+    const posterImageUrl = selectedVideo ? `${selectedVideo.image}`: "";
+
 
     useEffect(() => {
         const video = videoRef.current;
@@ -20,9 +18,11 @@ function VideoVid({ selectedVideo, isPlaying }) {
         }
     }, [isPlaying]);
 
+    console.log("Poster Image URL:", posterImageUrl);
+
     return (
-        <video ref={videoRef} autoPlay className='video-vid' poster={selectedVideo ? selectedVideo.image : ""}>
-            <source className='video-vid__source' src={videoUrlWithApiKey} />
+        <video ref={videoRef} autoPlay className='video-vid' poster={posterImageUrl}>
+            <source className='video-vid__source' src={videoUrl} />
         </video>
     );
 }

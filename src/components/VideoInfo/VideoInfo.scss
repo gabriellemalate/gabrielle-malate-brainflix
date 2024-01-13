@@ -3,6 +3,7 @@
 
 .video-info {
     @include column;
+    width: 100%;
 
     @include desktop {
         align-self: flex-end;
