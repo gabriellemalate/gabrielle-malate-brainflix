@@ -81,14 +81,12 @@ function UploadPage() {
                     {error && <div className="upload-error">{error}</div>}
 
                     <div className="upload-buttons">
-                        {/* <Link to="/success"> */}
                         <button className="upload-button" onClick={handlePublish}>
                             <div className="upload-button-eq">
                                 <img className="upload-button-icon" src={publish} alt="Publish" />
                                 PUBLISH
                             </div>
                         </button>
-                        {/* </Link> */}
                         <Link to="/">
                             <button className="upload-cancel">
                                 CANCEL
