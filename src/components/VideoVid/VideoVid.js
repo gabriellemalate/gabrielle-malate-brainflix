@@ -7,6 +7,7 @@ function VideoVid({ selectedVideo, isPlaying }) {
     const videoUrl = selectedVideo ? selectedVideo.video : "";
     const posterImageUrl = selectedVideo ? `${selectedVideo.image}`: "";
 
+    console.log("Poster Image URL:", posterImageUrl);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -17,8 +18,6 @@ function VideoVid({ selectedVideo, isPlaying }) {
             video.pause();
         }
     }, [isPlaying]);
-
-    console.log("Poster Image URL:", posterImageUrl);
 
     return (
         <video ref={videoRef} autoPlay className='video-vid' poster={posterImageUrl}>
